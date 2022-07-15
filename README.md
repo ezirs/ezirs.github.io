@@ -3,7 +3,7 @@
 composer require phpmailer/phpmailer
 ```
 
-# sendContact.php
+### sendContact.php
 ```
 <?php
     require __DIR__ . '/vendor/autoload.php';
