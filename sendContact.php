@@ -32,13 +32,13 @@
     $mail->SMTPAuth   = true;
     $mail->SMTPSecure = 'tls';
     $mail->Port       = 587;
-    $mail->Username   = "oik13052003@gmail.com";
-    $mail->Password   = "scbwuckjfygyxlom";
+    $mail->Username   = "<YOUR_EMAIL>";
+    $mail->Password   = "<YOUR_EMAIL_PASSWORD>";
 
-    $mail->From       = "yorandayorick09@gmail.com";
+    $mail->From       = "<EMAIL>";
     $mail->FromName   = "Mailer";
     $mail->WordWrap   = 50;
-    $mail->addAddress('ezirs09@gmail.com');
+    $mail->addAddress('<TO_EMAIL>');
     $mail->IsHTML(true);
     $mail->Subject    = $name . ' || Contect Me';
     $mail->Body       = $message;
