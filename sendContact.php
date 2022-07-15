@@ -47,43 +47,5 @@
     } else {
         echo 'true';
     }
-
-    // $name = $_POST['name'];
-    // $email = $_POST['email'];
-    // $_message = $_POST['message'];
-
-    // $to = 'ezirs09@gmail.com';
-    // $subject = $name . ' || Contect Me';
-    // $message = '
-    // <html>
-    //     <head>
-    //     <style>
-    //         .text-center {
-    //             text-align: center !important
-    //         }
-    //         .text-dark {
-    //             --bs-text-opacity: 1;
-    //             color: rgba(var(--bs-dark-rgb), var(--bs-text-opacity)) !important
-    //         }
-    //     </style>
-    //     </head>
-    //     <body>
-    //         <h1 class="text-center text-dark">'. $_message .'</h1>
-    //     </body>
-    // </html>
-    // ';
-
-    // $headers[] = 'MIME-Version: 1.0';
-    // $headers[] = 'Content-type: text/html; charset=iso-8859-1';
-
-    // if (mail($to, $subject, $message, implode("\r\n", $headers))) {
-    //     $replay_to = $email;
-    //     $replay_subject = 'Thanks for the message';
-    //     $replay_message = 'Thank you for visiting my website and the message you sent.';
-    //     mail($replay_to, $replay_subject, $replay_message, implode("\r\n", $headers));
-    //     echo 'true';
-    // } else {
-    //     echo 'false';
-    // }
     
 ?>
