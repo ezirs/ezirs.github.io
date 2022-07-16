@@ -241,6 +241,8 @@
                         let btn =
                             '<button type="submit" class="btn btn-outline-primary">Send</button>';
                         $("#btn").html(btn);
+                    } else if (resp === 'validation') {
+                        alert("Incomplete form");
                     } else {
                         alert("Message not sent, please try for a few more minutes");
                     }
