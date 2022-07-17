@@ -3,7 +3,7 @@
     require __DIR__ . '/vendor/autoload.php';
     use PHPMailer\PHPMailer\PHPMailer;
 
-    if (isset($_POST['submit'])) {
+    if (isset($_POST['token'])) {
         if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['message'])) {
             $name = $_POST['name'];
             $email = $_POST['email'];
@@ -52,9 +52,9 @@
             echo 'validation';
         }
     } else {
-?>
+    ?>
 <script>
-document.location = "index.html";
+document.location = "index.php";
 </script>
 <?php
     }

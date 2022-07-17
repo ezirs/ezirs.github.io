@@ -152,23 +152,23 @@
                     <div class="col-md-6 shadow-lg p-3 p-md-5 rounded-5 bg-light" data-aos="flip-left"
                         data-aos-easing="ease-out-cubic" data-aos-offset="200" data-aos-duration="2000">
                         <form id="contactForm" method="POST" enctype="multipart/form-data" class="mb-3">
+                            <input type="hidden" name="token" value="<?= uniqid() ?>">
                             <div class="mb-3">
                                 <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" name="name" id="name" aria-describedby="name"
-                                    required />
+                                <input type="text" class="form-control" name="name" aria-describedby="name" required />
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" name="email" id="email"
-                                    aria-describedby="email" required />
+                                <input type="email" class="form-control" name="email" aria-describedby="email"
+                                    required />
                             </div>
                             <div class="mb-3">
                                 <label for="message" class="form-label">Message</label>
-                                <textarea class="form-control" name="message" id="message"
+                                <textarea class="form-control" name="message"
                                     style="height: 120px; min-height: 120px; max-height: 500px" required></textarea>
                             </div>
                             <div class="d-grid gap-2 col-6 mx-auto" id="btn">
-                                <button type="submit" name="submit" class="btn btn-outline-primary">Send</button>
+                                <button type="submit" class="btn btn-outline-primary">Send</button>
                             </div>
                         </form>
                     </div>
@@ -216,15 +216,6 @@
     $(document).ready(function() {
         $("#contactForm").on("submit", function(e) {
             e.preventDefault();
-
-            let btn = `
-                <button class="btn btn-primary" type="button" disabled>
-                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                    Sending...
-                </button>
-            `;
-            $("#btn").html(btn);
-
             $.ajax({
                 type: "POST",
                 url: "sendContact.php",
@@ -232,20 +223,29 @@
                 contentType: false,
                 cache: false,
                 processData: false,
+                beforeSend: function() {
+                    let btn = `
+                        <button class="btn btn-primary" type="button" disabled>
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            Sending...
+                        </button>
+                    `;
+                    $("#btn").html(btn);
+                },
                 error: function() {
                     alert("There is an error");
                 },
                 success: function(resp) {
-                    if (resp === 1) {
+                    if (resp == 1) {
                         alert("Message sent successfully");
-                        let btn =
-                            '<button type="submit" class="btn btn-outline-primary">Send</button>';
-                        $("#btn").html(btn);
-                    } else if (resp === 'validation') {
+                    } else if (resp == 'validation') {
                         alert("Incomplete form");
                     } else {
                         alert("Message not sent, please try for a few more minutes");
                     }
+                    let btn =
+                        '<button type="submit" class="btn btn-outline-primary">Send</button>';
+                    $("#btn").html(btn);
                     $("#contactForm")[0].reset();
                 },
             });
